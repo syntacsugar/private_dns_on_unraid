@@ -28,8 +28,8 @@ RUN set -x \
   && apt-get clean
 
 ADD ./unbound.conf /etc/unbound/unbound.conf
-ADD ./privkey.pem /etc/unbound/privkey.pem
-ADD ./fullchain.pem /etc/unbound/fullchain.pem
+#ADD ./privkey.pem /etc/unbound/privkey.pem
+#ADD ./fullchain.pem /etc/unbound/fullchain.pem
 ADD ./unbound.sh /unbound.sh
 
 WORKDIR /etc/unbound/
