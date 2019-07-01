@@ -5,6 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN set -x \
 	&& apt update \
 	&& apt -y upgrade \
+    && apt -y install openssl wget lsb-release \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 
