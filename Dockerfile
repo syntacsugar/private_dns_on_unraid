@@ -31,7 +31,7 @@ ADD ./unbound.conf /etc/unbound/unbound.conf
 #ADD ./privkey.pem /etc/unbound/privkey.pem
 #ADD ./fullchain.pem /etc/unbound/fullchain.pem
 ADD ./unbound.sh /unbound.sh
-
+RUN chmod u+x /unbound.sh
 WORKDIR /etc/unbound/
 
 EXPOSE 853
