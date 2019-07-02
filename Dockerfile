@@ -12,9 +12,10 @@ RUN set -x \
 
 ADD ./install-dnss.sh /install-dnss.sh
 RUN chmod u+x /install-dnss.sh
-WORKDIR /
+CMD ["/install-dnss.sh"]
 
+WORKDIR /etc/dns/
+CMD ["./start.sh"]
 #EXPOSE 853
 
-CMD ["/install-dnss.sh"]
 

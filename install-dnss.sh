@@ -62,5 +62,3 @@ else
 	echo "Failed to download Technitium DNS Server from: $dnsUrl"
 	exit 1
 fi
-cd /etc/dns/
-sudo ./start.sh
