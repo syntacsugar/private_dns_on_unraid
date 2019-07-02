@@ -49,7 +49,9 @@ RUN set -x \
     && 	else \
     && 		echo "Installing Technitium DNS Server..." \
     && 	fi \
+    && 	 \
     && 	tar -zxf $dnsTar -C $dnsDir >> $installLog 2>&1 \
+    && 	 \
     && 	echo "" \
     && 	echo "Technitium DNS Server was installed succesfully!" \
     && 	echo "Open http://$(hostname):5380/ to access the web console." \
