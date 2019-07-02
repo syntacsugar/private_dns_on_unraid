@@ -16,3 +16,4 @@ RUN tar -xvzf /etc/dns/allfiles.tgz -C "/etc/dns"
 RUN dpkg -i "/etc/dns/packages-microsoft-prod.deb" 
 RUN cd /etc/dns/
 CMD ["/etc/dns/start.sh"]
+CMD ["sleep","9999"]
