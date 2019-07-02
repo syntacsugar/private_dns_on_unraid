@@ -6,7 +6,7 @@ dnsUrl="https://download.technitium.com/dns/DnsServerPortable.tar.gz"
 
 mkdir -p $dnsDir
 installLog="$dnsDir/install.log"
-echo "" > $installLog
+echo "" #> $installLog
 
 echo ""
 echo "==============================="
@@ -22,11 +22,11 @@ else
 
 	if wget -q "https://packages.microsoft.com/config/ubuntu/$(lsb_release -r -s)/packages-microsoft-prod.deb" -O "$dnsDir/packages-microsoft-prod.deb"
 	then
-		dpkg -i "$dnsDir/packages-microsoft-prod.deb">> $installLog 2>&1
+		dpkg -i "$dnsDir/packages-microsoft-prod.deb" #>> $installLog 2>&1
 
-		add-apt-repository universe >> $installLog 2>&1
+		add-apt-repository universe #>> $installLog 2>&1 >> $installLog 2>&1
 
-		until apt-get -y update >> $installLog 2>&1 && apt-get -y install libunwind8 icu-devtools apt-transport-https aspnetcore-runtime-2.2 >> $installLog 2>&1
+		until apt-get -y update  && apt-get -y install libunwind8 icu-devtools apt-transport-https aspnetcore-runtime-2.2 #>> $installLog 2>&1
 		do
 			echo "Trying again.."
 			sleep 2
@@ -52,7 +52,7 @@ then
 		echo "Installing Technitium DNS Server..."
 	fi
 	
-	tar -zxf $dnsTar -C $dnsDir >> $installLog 2>&1
+	tar -zxf $dnsTar -C $dnsDir #>> $installLog 2>&1
 	
 	echo ""
 	echo "Technitium DNS Server was installed succesfully!"
