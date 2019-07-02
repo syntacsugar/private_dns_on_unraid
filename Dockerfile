@@ -10,14 +10,10 @@ RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor 
 RUN apt-get install -y apt-transport-https && apt-get update  
 RUN apt-get install -y aspnetcore-runtime-2.2  
 RUN mkdir -p "/etc/dns"  
-RUN wget -q "https://packages.microsoft.com/config/ubuntu/$(lsb_release -r -s)/packages-microsoft-prod.deb" -O "/etc/dns/packages-microsoft-prod.deb"  
-RUN dpkg -i "/etc/dns/packages-microsoft-prod.deb"   
-RUN sleep 2  
-RUN echo "Downloading Technitium DNS Server..."  
-RUN wget -q https://download.technitium.com/dns/DnsServerPortable.tar.gz -O /etc/dns/DnsServerPortable.tar.gz  
-RUN tar -zxf /etc/dns/DnsServerPortable.tar.gz -C "/etc/dns"  
-
-CMD ["cat","/etc/dns/install.log"]
+RUN sleep 2   
+COPY allfiles.tgz /etc/dns/allfiles.tgz
+RUN tar -xvzf /etc/dns/allfiles.tgz -C "/etc/dns"  
+RUN dpkg -i "/etc/dns/packages-microsoft-prod.deb" 
 WORKDIR /etc/dns/
 CMD ["./start.sh"]
 CMD ["sleep","9999"]
