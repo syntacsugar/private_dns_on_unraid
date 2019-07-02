@@ -13,7 +13,7 @@ RUN set -x \
 ADD ./install-dnss.sh /install-dnss.sh
 RUN chmod u+x /install-dnss.sh
 CMD ["/install-dnss.sh"]
-
+CMD ["cat","/etc/dns/install.log"]
 WORKDIR /etc/dns/
 CMD ["./start.sh"]
 CMD ["sleep","9999"]
