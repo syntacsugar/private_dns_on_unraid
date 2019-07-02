@@ -8,7 +8,7 @@ RUN apt -y upgrade
 RUN apt -y install openssl wget lsb-release libunwind8 icu-devtools apt-transport-https gpg
 RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg && mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/ && wget -q https://packages.microsoft.com/config/ubuntu/18.04/prod.list && mv prod.list /etc/apt/sources.list.d/microsoft-prod.list && chown root:root /etc/apt/trusted.gpg.d/microsoft.asc.gpg  && chown root:root /etc/apt/sources.list.d/microsoft-prod.list  
 RUN apt-get install -y apt-transport-https && apt-get update  
-RUN apt-get install aspnetcore-runtime-2.2  
+RUN apt-get install -y aspnetcore-runtime-2.2  
 RUN mkdir -p "/etc/dns"  
 RUN wget -q "https://packages.microsoft.com/config/ubuntu/$(lsb_release -r -s)/packages-microsoft-prod.deb" -O "/etc/dns/packages-microsoft-prod.deb"  
 RUN dpkg -i "/etc/dns/packages-microsoft-prod.deb"   
