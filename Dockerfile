@@ -10,10 +10,7 @@ RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor 
 RUN apt-get install -y apt-transport-https && apt-get update  
 RUN apt-get install -y aspnetcore-runtime-2.2  
 RUN mkdir -p "/etc/dns"  
-RUN sleep 2   
 COPY allfiles.tgz /etc/dns/allfiles.tgz
 RUN tar -xvzf /etc/dns/allfiles.tgz -C "/etc/dns"  
 RUN dpkg -i "/etc/dns/packages-microsoft-prod.deb" 
-RUN cd /etc/dns/
-CMD ["/etc/dns/start.sh"]
-CMD ["sleep","9999"]
+CMD ["cd","/etc/dns/","&&","./start.sh"]
