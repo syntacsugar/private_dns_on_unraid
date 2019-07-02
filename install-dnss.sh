@@ -54,38 +54,6 @@ then
 	
 	tar -zxf $dnsTar -C $dnsDir >> $installLog 2>&1
 	
-	if [ "$(ps --no-headers -o comm 1 | tr -d '\n')" = "systemd" ] 
-	then
-		if [ -f "/etc/systemd/system/dns.service" ]
-		then
-			echo "Restarting systemd service..."
-			systemctl restart dns.service >> $installLog 2>&1
-		else
-			echo "Configuring systemd service..."
-			cp $dnsDir/systemd.service /etc/systemd/system/dns.service
-			systemctl enable dns.service >> $installLog 2>&1
-			systemctl start dns.service >> $installLog 2>&1
-		fi
-	else
-		if [ -f "/etc/supervisor/conf.d/dns.conf" ]
-		then
-			echo "Restarting supervisor service..."
-			service supervisor restart >> $installLog 2>&1
-		else
-			echo "Installing supervisor..."
-			
-			until apt-get -y install supervisor >> $installLog 2>&1
-			do
-				echo "Trying again.."
-				sleep 2
-			done
-			
-			echo "Configuring supervisor service..."
-			cp $dnsDir/supervisor.conf /etc/supervisor/conf.d/dns.conf
-			service supervisor restart >> $installLog 2>&1
-		fi
-	fi
-	
 	echo ""
 	echo "Technitium DNS Server was installed succesfully!"
 	echo "Open http://$(hostname):5380/ to access the web console."
@@ -94,3 +62,5 @@ else
 	echo "Failed to download Technitium DNS Server from: $dnsUrl"
 	exit 1
 fi
+cd /etc/dns/
+sudo ./start.sh

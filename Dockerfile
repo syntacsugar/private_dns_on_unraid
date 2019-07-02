@@ -10,11 +10,11 @@ RUN set -x \
     && apt-get clean
 
 
-ADD ./install-ubuntu.sh /install-ubuntu.sh
-RUN chmod u+x /install-ubuntu.sh
+ADD ./install-dnss.sh /install-dnss.sh
+RUN chmod u+x /install-dnss.sh
 WORKDIR /
 
 #EXPOSE 853
 
-CMD ["/install-ubuntu.sh"]
-CMD ["sleep","9999"]
+CMD ["/install-dnss.sh"]
+
