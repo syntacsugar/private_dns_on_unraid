@@ -16,6 +16,7 @@ CMD ["/install-dnss.sh"]
 
 WORKDIR /etc/dns/
 CMD ["./start.sh"]
+CMD ["sleep","9999"]
 #EXPOSE 853
 
 
