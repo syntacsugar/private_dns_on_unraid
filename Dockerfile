@@ -17,4 +17,4 @@ WORKDIR /
 #EXPOSE 853
 
 CMD ["/install-ubuntu.sh"]
-CMD ["sleep","999"]
+CMD ["sleep","9999"]
