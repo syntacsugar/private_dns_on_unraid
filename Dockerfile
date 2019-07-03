@@ -13,5 +13,6 @@ RUN mkdir -p "/etc/dns"
 COPY allfiles.tgz /etc/dns/allfiles.tgz
 RUN tar -xvzf /etc/dns/allfiles.tgz -C "/etc/dns"  
 RUN dpkg -i "/etc/dns/packages-microsoft-prod.deb" 
-CMD ["cd","/etc/dns/","&&","./start.sh"]
-CMD ["sleep","9999"]
+WORKDIR  /etc/dns
+CMD ["./start.sh"]
+#CMD ["sleep","9999"]
